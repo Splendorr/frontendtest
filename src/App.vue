@@ -1,27 +1,10 @@
 <template lang="pug">
   #app
-    img(src='./assets/logo.png')
-    h1 {{ msg }}
-    h2 Essential Links
-    ul
-      li
-        a(href='https://vuejs.org', target='_blank') Core Docs
-      li
-        a(href='https://forum.vuejs.org', target='_blank') Forum
-      li
-        a(href='https://chat.vuejs.org', target='_blank') Community Chat
-      li
-        a(href='https://twitter.com/vuejs', target='_blank') Twitter
-    h2 Ecosystem
-    ul
-      li
-        a(href='http://router.vuejs.org/', target='_blank') vue-router
-      li
-        a(href='http://vuex.vuejs.org/', target='_blank') vuex
-      li
-        a(href='http://vue-loader.vuejs.org/', target='_blank') vue-loader
-      li
-        a(href='https://github.com/vuejs/awesome-vue', target='_blank') awesome-vue
+    .container
+      .chessboard
+        h1 Chessboard
+      .sidebar
+        h1 {{ msg }}
 </template>
 
 <script>
@@ -29,32 +12,67 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'This is the sidebar'
     }
   }
 }
 </script>
 
 <style lang="stylus">
-#app
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  @import '../node_modules/normalize-styl/normalize'
+  
+  lg = 'screen and (min-width: 960px)'
+  
+  body
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background-color #312e2b
+    padding 10px
+    @media lg
+      padding 20px
 
-h1, h2
-  font-weight: normal;
+  h1, h2
+    font-weight: normal;
 
-ul
-  list-style-type: none;
-  padding: 0;
+  ul
+    list-style-type: none;
+    padding: 0;
 
-li
-  display: inline-block;
-  margin: 0 10px;
+  li
+    display: inline-block;
+    margin: 0 10px;
 
-a
-  color: #42b983;
+  a
+    color: #42b983;
+   
+  .container
+    width 100%
+    max-width 100%
+    margin 0
+    display flex
+    flex-direction column
+    @media lg
+      margin 0 auto
+      max-width 1200px
+      flex-direction row 
+  
+  .chessboard
+    width 100%
+    margin 0
+    margin-bottom 10px 
+    @media lg
+      width (2/3) * 100%
+      margin 0 5px 0 0 
+    background-color #B08967 
+  
+  .sidebar
+    width 100%
+    margin 0
+    @media lg
+      width (1/3) * 100%
+      margin 0 0 0 5px 
+    background-color #FFF 
 </style>
