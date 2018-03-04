@@ -178,14 +178,14 @@ export default {
         &:nth-child(2n+1)
           colorStates(#b08967, .15)
         &.selected
-          colorStates(#f9e77b, .20)
+          colorStates(#f9e77b, .15)
       &:nth-child(2n+1) 
         .square
           colorStates(#b08967, .15)
           &:nth-child(2n+1)
             colorStates(#eed8b7, .30)
           &.selected
-              colorStates(#f9e77b, .20)
+              colorStates(#f9e77b, .15)
           
             
 </style>
