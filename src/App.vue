@@ -24,7 +24,6 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'This is the sidebar',
       instructions: 'Click on a square on the chessboard to highlight it. The list of clicked squares appears in the sidebar.',
       clickedSquares :[],
       currentSquare: '',
