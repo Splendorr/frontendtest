@@ -2,7 +2,7 @@
   #app
     header
       .text
-        h1 Front End Test
+        h1 Front End Test by Nick Splendorr
         p.instructions {{instructions}}
       .toggle
         button(@click="toggleCoords") {{showCoords ? "Hide" : "Show"}} Coordinates
@@ -24,7 +24,7 @@ export default {
   name: 'app',
   data () {
     return {
-      instructions: 'Click on a square on the chessboard to highlight it. The list of clicked squares appears in the sidebar.',
+      instructions: 'Click or tap a square on the chessboard to highlight it. The squares you\'ve clicked are shown in the sidebar.',
       clickedSquares :[],
       currentSquare: '',
       boardGrid: { 
