@@ -120,7 +120,7 @@ export default {
     margin 0
     @media lg
       margin 0 auto
-      max-width 1000px
+      max-width 80vw
       
   .board-and-sidebar
     display flex
