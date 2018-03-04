@@ -18,7 +18,8 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'This is the sidebar'
+      msg: 'This is the sidebar',
+      clickedSquares :[]
     }
   }
 }
