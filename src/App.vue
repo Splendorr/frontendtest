@@ -59,6 +59,13 @@ export default {
   
   lg = 'screen and (min-width: 769px)'
   
+  colorStates(hex, amt)
+    background-color hex
+    &:hover, &:focus
+      background-color hex + (amt * 100%)
+    &:active
+      background-color hex - ((amt / 3) * 100%)
+  
   body
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -106,9 +113,11 @@ export default {
     border-radius 4px 
     border 0px solid #000
     cursor pointer
-    background-color #f0f0f0 
+    background-color #e6e6e6 
+    &:hover, &:focus
+      background-color #e6e6e6 + 50%
     &:active
-      background-color @background-color - 25%
+      background-color #e6e6e6 - 15%
    
   .container
     width 100%
@@ -165,18 +174,18 @@ export default {
           position absolute
           top 2px
           left 3px
-        background-color #eed8b7
+        colorStates(#eed8b7, .30)
         &:nth-child(2n+1)
-          background-color #b08967 
+          colorStates(#b08967, .15)
         &.selected
-          background-color #f9e77b 
+          colorStates(#f9e77b, .20)
       &:nth-child(2n+1) 
         .square
-          background-color #b08967
+          colorStates(#b08967, .15)
           &:nth-child(2n+1)
-            background-color #eed8b7 
+            colorStates(#eed8b7, .30)
           &.selected
-              background-color #f9e77b 
+              colorStates(#f9e77b, .20)
           
             
 </style>
