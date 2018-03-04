@@ -10,7 +10,11 @@
               .square(data-coord=coord v-on:click="clickSquare")
                 //- span= coord
       .sidebar
-        ul {{ clickedSquares.length ? clickedSquares : 'No squares clicked yet.' }}
+        p Clicked Squares:
+        ul(v-if="clickedSquares.length")
+          li(v-for="square in clickedSquares") {{square}}
+        ul(v-else=)
+          li None yet
 </template>
 
 <script>
@@ -56,8 +60,7 @@ export default {
     padding: 0;
 
   li
-    display: inline-block;
-    margin: 0 10px;
+    margin: 0 1em;
 
   a
     color: #42b983;
@@ -81,8 +84,11 @@ export default {
       margin 0 0 0 5px 
     background-color #FFF
     border-radius 4px 
+    ul, p
+      padding 0 1em
     ul
-      padding 0 10px
+      li
+        display block
   
   .chessboard
     width 100%
