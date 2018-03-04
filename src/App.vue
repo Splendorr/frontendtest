@@ -16,7 +16,7 @@
             //-   .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
                 //- span= coord
       .sidebar
-        p Clicked Squares:
+        h2 Clicked Squares:
         ol(v-if="clickedSquares.length")
           li(v-for="square in clickedSquares") {{square}}
         ol(v-else=)
@@ -133,13 +133,28 @@ export default {
   .sidebar
     width 100%
     margin 0
+    padding 0.25rem 0
     @media lg
       width (1/3) * 100%
       margin 0 0 0 5px 
+      padding 0
     background-color #FFF
     border-radius 4px 
-    ul, p
-      padding 0 1em
+    h2, ul, ol
+      margin-top 0.5rem
+      margin-bottom 0.5rem
+      @media lg
+        margin-top 1rem
+        margin-bottom 1rem
+    h2
+      padding 0 0.75rem
+      @media lg
+        padding 0 1rem
+    ul, ol, p
+      padding 0 1.75em
+      @media lg
+        padding 0 2em
+      // padding 0
     ul
       li
         display block
