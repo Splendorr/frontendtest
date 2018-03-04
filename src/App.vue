@@ -10,7 +10,7 @@
               .square(data-coord=coord v-on:click="clickSquare")
                 //- span= coord
       .sidebar
-        h1 {{ msg }}
+        ul {{ clickedSquares.length ? clickedSquares : 'No squares clicked yet.' }}
 </template>
 
 <script>
@@ -26,6 +26,7 @@ export default {
     clickSquare: function (e) {
       let coord = e.currentTarget.getAttribute('data-coord');
       console.log('vue click coord: ', coord);
+      this.clickedSquares.push(coord);
     }
   }
 }
@@ -40,7 +41,7 @@ export default {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: left;
     color: #25211b;
     background-color #312e2b
     padding 10px
@@ -80,6 +81,8 @@ export default {
       margin 0 0 0 5px 
     background-color #FFF
     border-radius 4px 
+    ul
+      padding 0 10px
   
   .chessboard
     width 100%
