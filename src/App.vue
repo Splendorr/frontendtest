@@ -7,7 +7,7 @@
           .row
             each col in boardGrid.cols
               - var coord = col + row
-              .square(data-coord=coord)
+              .square(data-coord=coord v-on:click="clickSquare")
                 //- span= coord
       .sidebar
         h1 {{ msg }}
@@ -20,6 +20,12 @@ export default {
     return {
       msg: 'This is the sidebar',
       clickedSquares :[]
+    }
+  },
+  methods: {
+    clickSquare: function (e) {
+      let coord = e.currentTarget.getAttribute('data-coord');
+      console.log('vue click coord: ', coord);
     }
   }
 }
@@ -35,7 +41,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #25211b;
     background-color #312e2b
     padding 10px
     @media lg
@@ -73,11 +79,14 @@ export default {
       width (1/3) * 100%
       margin 0 0 0 5px 
     background-color #FFF
+    border-radius 4px 
   
   .chessboard
     width 100%
     margin 0
     margin-bottom 10px 
+    border-radius 4px
+    overflow hidden 
     @media lg
       width (2/3) * 100%
       margin 0 5px 0 0 
