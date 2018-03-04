@@ -11,10 +11,6 @@
         .row(v-for="row in boardGrid.rows")
           .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
             span(v-show="showCoords") {{col + row}}
-            //- each col in boardGrid.cols
-            //-   - var coord = col + row
-            //-   .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
-                //- span= coord
       .sidebar
         h2 Clicked Squares:
         ol(v-if="clickedSquares.length")
@@ -76,9 +72,6 @@ export default {
     padding 10px
     @media lg
       padding 20px
-
-  h1, h2
-    font-weight: normal;
 
   ul
     list-style-type: none;
@@ -147,6 +140,7 @@ export default {
         margin-top 1rem
         margin-bottom 1rem
     h2
+      font-weight: normal;
       padding 0 0.75rem
       @media lg
         padding 0 1rem
@@ -154,7 +148,6 @@ export default {
       padding 0 1.75em
       @media lg
         padding 0 2em
-      // padding 0
     ul
       li
         display block
