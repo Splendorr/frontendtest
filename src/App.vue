@@ -7,14 +7,14 @@
           .row
             each col in boardGrid.cols
               - var coord = col + row
-              .square(data-coord=coord v-on:click="clickSquare")
+              .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
                 //- span= coord
       .sidebar
         p Clicked Squares:
         ul(v-if="clickedSquares.length")
           li(v-for="square in clickedSquares") {{square}}
         ul(v-else=)
-          li None yet
+          li None yet!
 </template>
 
 <script>
@@ -23,13 +23,16 @@ export default {
   data () {
     return {
       msg: 'This is the sidebar',
-      clickedSquares :[]
+      clickedSquares :[],
+      currentSquare: ''
     }
   },
   methods: {
     clickSquare: function (e) {
       let coord = e.currentTarget.getAttribute('data-coord');
       console.log('vue click coord: ', coord);
+      this.currentSquare = coord;
+      console.log('vue currentSquare: ', this.currentSquare);
       this.clickedSquares.push(coord);
     }
   }
@@ -127,5 +130,8 @@ export default {
         position absolute
         top 0
         left 0
+        
+      .selected
+        background-color #f9e77b 
     
 </style>
