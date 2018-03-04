@@ -1,13 +1,12 @@
 <template lang="pug">
-  - var boardGrid = { rows: [8, 7, 6, 5, 4, 3, 2, 1], cols: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] } 
   #app
     .container
       .chessboard
-        each row in boardGrid.rows
-          .row
-            each col in boardGrid.cols
-              - var coord = col + row
-              .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
+        .row(v-for="row in boardGrid.rows")
+          .square(v-for="col in boardGrid.cols" data-coord="col + row") {{col + row}}
+            //- each col in boardGrid.cols
+            //-   - var coord = col + row
+            //-   .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
                 //- span= coord
       .sidebar
         p Clicked Squares:
@@ -24,7 +23,11 @@ export default {
     return {
       msg: 'This is the sidebar',
       clickedSquares :[],
-      currentSquare: ''
+      currentSquare: '',
+      boardGrid: { 
+        rows: [8, 7, 6, 5, 4, 3, 2, 1], 
+        cols: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] 
+      }
     }
   },
   methods: {
