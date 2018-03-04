@@ -1,9 +1,16 @@
 <template lang="pug">
   #app
+    header
+      .text
+        h1 Front End Test
+        p.instructions {{instructions}}
+      .toggle
+        button(@click="toggleCoords") {{showCoords ? "Hide" : "Show"}} Coordinates
     .container
       .chessboard
         .row(v-for="row in boardGrid.rows")
-          .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }") {{col + row}}
+          .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
+            span(v-show="showCoords") {{col + row}}
             //- each col in boardGrid.cols
             //-   - var coord = col + row
             //-   .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
@@ -22,12 +29,14 @@ export default {
   data () {
     return {
       msg: 'This is the sidebar',
+      instructions: 'Click on a square on the chessboard to highlight it. The list of clicked squares appears in the sidebar.',
       clickedSquares :[],
       currentSquare: '',
       boardGrid: { 
         rows: [8, 7, 6, 5, 4, 3, 2, 1], 
         cols: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] 
-      }
+      },
+      showCoords: false
     }
   },
   methods: {
@@ -37,6 +46,9 @@ export default {
       this.currentSquare = coord;
       console.log('vue currentSquare: ', this.currentSquare);
       this.clickedSquares.push(coord);
+    },
+    toggleCoords: function(){
+      this.showCoords = !this.showCoords
     }
   }
 }
@@ -70,6 +82,34 @@ export default {
 
   a
     color: #42b983;
+    
+  header
+    display flex
+    flex-direction column
+    @media lg
+      flex-direction row 
+      justify-content space-between
+      align-items flex-end
+    h1
+      margin 0
+      margin-bottom 0.5rem
+      color #FFF 
+    p.instructions
+      margin-top 0
+      color #FFF 
+      
+  .toggle
+    // float none
+    display inline-block
+    // @media lg
+    //   float right
+  button
+    display block
+    margin-bottom 1em 
+    font-size 0.9em  
+    line-height 1.7 
+    border-radius 4px 
+    border 0px solid #000
    
   .container
     width 100%
@@ -121,6 +161,10 @@ export default {
         width (1/8) * 100%
         height 0
         padding-bottom (1/8) * 100%
+        span
+          position absolute
+          top 2px
+          left 3px
         background-color #eed8b7
         &:nth-child(2n+1)
           background-color #b08967 
