@@ -16,7 +16,7 @@
         ol(v-if="clickedSquares.length")
           li(v-for="square in clickedSquares") {{square}}
         ol(v-else=)
-          li None yet!
+          span None yet!
 </template>
 
 <script>
