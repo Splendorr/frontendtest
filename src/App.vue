@@ -3,16 +3,16 @@
     .container
       .chessboard
         .row(v-for="row in boardGrid.rows")
-          .square(v-for="col in boardGrid.cols" data-coord="col + row") {{col + row}}
+          .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }") {{col + row}}
             //- each col in boardGrid.cols
             //-   - var coord = col + row
             //-   .square(data-coord=coord v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
                 //- span= coord
       .sidebar
         p Clicked Squares:
-        ul(v-if="clickedSquares.length")
+        ol(v-if="clickedSquares.length")
           li(v-for="square in clickedSquares") {{square}}
-        ul(v-else=)
+        ol(v-else=)
           li None yet!
 </template>
 
@@ -106,6 +106,7 @@ export default {
       width (2/3) * 100%
       margin 0 5px 0 0 
     background-color #B08967 
+    
     .row
       width 100%
       height auto
@@ -113,28 +114,25 @@ export default {
       display block
       height 0
       padding-bottom (1/8) * 100%
+      
       .square
+        position relative
+        display inline-block
+        width (1/8) * 100%
+        height 0
+        padding-bottom (1/8) * 100%
         background-color #eed8b7
         &:nth-child(2n+1)
           background-color #b08967 
-      &:nth-child(2n+1)
+        &.selected
+          background-color #f9e77b 
+      &:nth-child(2n+1) 
         .square
           background-color #b08967
           &:nth-child(2n+1)
             background-color #eed8b7 
-        
-    .square
-      position relative
-      display inline-block
-      width (1/8) * 100%
-      height 0
-      padding-bottom (1/8) * 100%
-      span
-        position absolute
-        top 0
-        left 0
-        
-      .selected
-        background-color #f9e77b 
-    
+          &.selected
+              background-color #f9e77b 
+          
+            
 </style>
