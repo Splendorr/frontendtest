@@ -98,11 +98,6 @@ export default {
       margin-top 0
       color #FFF 
       
-  .toggle
-    // float none
-    display inline-block
-    // @media lg
-    //   float right
   button
     display block
     margin-bottom 1em 
@@ -110,6 +105,10 @@ export default {
     line-height 1.7 
     border-radius 4px 
     border 0px solid #000
+    cursor pointer
+    background-color #f0f0f0 
+    &:active
+      background-color @background-color - 25%
    
   .container
     width 100%
@@ -161,6 +160,7 @@ export default {
         width (1/8) * 100%
         height 0
         padding-bottom (1/8) * 100%
+        cursor pointer
         span
           position absolute
           top 2px
