@@ -1,22 +1,23 @@
 <template lang="pug">
   #app
-    header
-      .text
-        h1 Front End Test by Nick Splendorr
-        p.instructions {{instructions}}
-      .toggle
-        button(@click="toggleCoords") {{showCoords ? "Hide" : "Show"}} Coordinates
     .container
-      .chessboard
-        .row(v-for="row in boardGrid.rows")
-          .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
-            span(v-show="showCoords") {{col + row}}
-      .sidebar
-        h2 Clicked Squares:
-        ol(v-if="clickedSquares.length")
-          li(v-for="square in clickedSquares") {{square}}
-        ol(v-else=)
-          span None yet!
+      header
+        .text
+          h1 Front End Test by Nick Splendorr
+          p.instructions {{instructions}}
+        .toggle
+          button(@click="toggleCoords") {{showCoords ? "Hide" : "Show"}} Coordinates
+      .board-and-sidebar
+        .chessboard
+          .row(v-for="row in boardGrid.rows")
+            .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
+              span(v-show="showCoords") {{col + row}}
+        .sidebar
+          h2 Clicked Squares:
+          ol(v-if="clickedSquares.length")
+            li(v-for="square in clickedSquares") {{square}}
+          ol(v-else=)
+            span None yet!
 </template>
 
 <script>
@@ -96,7 +97,9 @@ export default {
     p.instructions
       margin-top 0
       color #FFF 
-      
+  
+  .toggle
+    flex-shrink 0 
   button
     display block
     margin-bottom 1em 
@@ -115,15 +118,20 @@ export default {
     width 100%
     max-width 100%
     margin 0
+    @media lg
+      margin 0 auto
+      max-width 1000px
+      
+  .board-and-sidebar
     display flex
     flex-direction column
     @media lg
-      margin 0 auto
-      max-width 1200px
       flex-direction row 
   
   .sidebar
     width 100%
+    max-height 75vh
+    overflow: scroll 
     margin 0
     padding 0.25rem 0
     @media lg
@@ -160,7 +168,7 @@ export default {
     @media lg
       width (2/3) * 100%
       margin 0 5px 0 0 
-    background-color #B08967 
+    // background-color #B08967 
     
     .row
       width 100%
