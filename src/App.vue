@@ -108,9 +108,10 @@ export default {
     border-radius 4px 
     border 0px solid #000
     cursor pointer
+    transition background-color .2s ease
     background-color #e6e6e6 
     &:hover, &:focus
-      background-color #e6e6e6 + 50%
+      background-color #FFF
     &:active
       background-color #e6e6e6 - 15%
    
@@ -181,6 +182,7 @@ export default {
       .square
         position relative
         display inline-block
+        transition background-color .2s ease
         width (1/8) * 100%
         height 0
         padding-bottom (1/8) * 100%
