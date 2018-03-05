@@ -103,6 +103,7 @@ export default {
   
   .toggle
     flex-shrink 0 
+    
   button
     display block
     margin-bottom 1em 
