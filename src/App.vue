@@ -11,7 +11,7 @@
         .chessboard
           .row(v-for="row in boardGrid.rows")
             .square(v-for="col in boardGrid.cols" :data-coord="col + row" v-on:click="clickSquare" v-bind:class="{selected : currentSquare == (col + row) }")
-              span(v-show="showCoords") {{col + row}}
+              span(v-bind:class="{hidden : !showCoords}") {{col + row}}
         .sidebar
           h2 Clicked Squares:
           ol(v-if="clickedSquares.length")
@@ -97,6 +97,9 @@ export default {
     p.instructions
       margin-top 0
       color #FFF 
+      padding-right 0 
+      @media lg 
+        padding-right 2em 
   
   .toggle
     flex-shrink 0 
@@ -188,9 +191,13 @@ export default {
         padding-bottom (1/8) * 100%
         cursor pointer
         span
+          transition opacity .2s ease
+          opacity 1
+          &.hidden
+            opacity 0
           position absolute
-          top 2px
-          left 3px
+          top 3px
+          left 4px
         colorStates(#eed8b7, .30)
         &:nth-child(2n+1)
           colorStates(#b08967, .15)
